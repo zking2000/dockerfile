@@ -4,9 +4,9 @@ FROM centos:latest
 MAINTAINER Stephen Zhou H "stephen.h.zhou@ericsson.com"
 
 # update source
-RUN yum update
+RUN yum update -y
 
-# Install curl
+# Install apps
 RUN yum install -y net-tools openssh-server initscripts
 RUN service sshd start
 RUN hostname Stephen

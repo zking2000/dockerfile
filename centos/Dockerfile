@@ -9,6 +9,8 @@ RUN yum update
 # Install curl
 RUN yum install -y net-tools openssh-server initscripts
 RUN service sshd start
+RUN hostname Stephen
+RUN
 
 # Expose ports.
 EXPOSE 22

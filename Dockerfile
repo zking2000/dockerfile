@@ -1,4 +1,4 @@
-FROM jdeathe/centos-ssh
+FROM centos
 RUN yum install -y wget
 RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 RUN wget http://mirrors.163.com/.help/CentOS6-Base-163.repo && mv /CentOS6-Base-163.repo /etc/yum.repos.d/
@@ -21,5 +21,8 @@ RUN echo " <role rolename=\"admin-gui\"/>" >> ./var/tmp/tomcat/apache-tomcat-7.0
 RUN echo " <user username=\"admin\" password=\"admin\" roles=\"manager-gui,admin-gui\"/>" >> ./var/tmp/tomcat/apache-tomcat-7.0.85/conf/tomcat-users.xml
 RUN echo "</tomcat-users>" >> ./var/tmp/tomcat/apache-tomcat-7.0.85/conf/tomcat-users.xml
 RUN sed -i /^$/d /var/tmp/tomcat/apache-tomcat-7.0.85/conf/tomcat-users.xml
+ENV JAVA_HOME /var/tmp/jdk/jdk1.8.0_161
+ENV CATALINA_HOME /var/tmp/tomcat/apache-tomcat-7.0.85
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 EXPOSE 8080
 EXPOSE 80

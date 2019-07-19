@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: httpd
+  name: nginx-deployment
+  namespace: k8s-demo
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: httpd
+    protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30943
+  selector:
+    app: httpd
+  type: NodePort

@@ -1,0 +1,28 @@
+# list deployment/pods/service in all namespaces
+kubectl get deployment -A
+kubectl get po -A
+kubectl get svc -A
+
+# List pods/deployment/service in specific namespace k8s-demo
+kubectl get po -o wide --namespace=k8s-demo
+kubectl get deploymnt -o wide --namespace=k8s-demo
+kubectl get svc -o wide --namespace=k8s-demo
+
+# create new namespace k8s-demo
+kubectl create namespace k8s-demo
+
+# list namespace
+kubectl get namespace
+
+# edit deployment for changing any parameters such as image version and replicas
+kubectl edit deloyment nginx-deployment-2
+
+# describe deployment
+kubectl describe deployment nginx-deployment-2
+
+# list rollout history of specific deployment
+kubectl rollout history deployment nginx-deployment-2 --namespace=k8s-demo
+
+# undo a rollout change
+kubectl rollout undo deployment nginx-deployment-2 --to-revision=1
+

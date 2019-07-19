@@ -26,3 +26,9 @@ kubectl rollout history deployment nginx-deployment-2 --namespace=k8s-demo
 # undo a rollout change
 kubectl rollout undo deployment nginx-deployment-2 --to-revision=1
 
+# create a new persistentvolume with gke
+kubectl apply -f pvc_gke.yml
+
+# delete a pv
+kubectl delete -f pvc_gke.yml
+

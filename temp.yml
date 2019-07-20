@@ -15,7 +15,7 @@ spec:
         app: jenkins
     spec:
       containers:
-        - image: jenkins:2.60.3
+        - image: jenkins:latest
           name: jenkins
           imagePullPolicy: IfNotPresent
           ports:
@@ -28,7 +28,8 @@ spec:
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home
+              readOnly: False
       volumes:
-      - name: jenkins-home
-        persistentVolumeClaim:
-          claimName: jenkins-volumeclaim
+        - name: jenkins-home
+          persistentVolumeClaim:
+            claimName: jenkins-volumeclaim
